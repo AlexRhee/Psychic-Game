@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Psychic Game</h1>
+    <div>
+        <p>Guess what letter I'm thinking of</p>
+        <p>Wins: <span id="inputWin">0</span></p>
+        <p>Losses: <span id="inputLoss">0</span></p>
+        <p>Guesses left: <span id="inputGuesses">0</span></p>
+        <p>Your Guesses so far: <span id="guesses"> </span></p>
+
+    </div>
+    <script>
+
+    var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o"
+    , "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+
+    var winCounter = 0;
+    var guessCounter = 10;
+    var lossCounter= 0;
+    var inputWin = document.getElementById("inputWin");
+    var inputLoss = document.getElementById("inputLoss");
+    var inputLoss = document.getElementById("inputGuesses");
+    var guesses = document.getElementById("guesses");
+
+    document.onkeyup = function (event) {
+
+    var user = event.key;
+    var computer = alphabet[Math.floor(Math.random() * alphabet.length)];
+    var x = event.keyCode;
+
+    alert("User guesses " + user);
+    alert("Computer is thinking of " + computer);
+
+    if (computer === user) {
+        alert("You guessed it!");
+        winCounter++;
+    } 
+    else {
+        alert("Try again!");
+        guessCounter--;
+    }
+
+    if (guessCounter == 0) {
+        alert("You lose!");
+        guessCounter = 10;
+        lossCounter ++;
+    }
+        
+    inputWin.textContent = winCounter;
+    inputLoss.textContent = winCounter;
+    inputGuesses.textContent = guessCounter;
+    guesses.textContent = user + ", ";
+
+
+
+    };
+    
+    </script>
+    
+</body>
+</html>
