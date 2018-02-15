@@ -29,17 +29,24 @@
     var inputLoss = document.getElementById("inputLoss");
     var inputGuesses = document.getElementById("inputGuesses");
     var guessLog = document.getElementById("guesses");
+    var computer = alphabet[Math.floor(Math.random() * alphabet.length)];
 
+    function newGame() {
+        computer = alphabet[Math.floor(Math.random() * alphabet.length)];
+    }
 
     document.onkeyup = function (event) {
 
     var user = event.key;
-    var computer = alphabet[Math.floor(Math.random() * alphabet.length)];
+
+    console.log(computer);
 
     if (computer === user) {
         alert("You guessed it!");
         winCounter++;
         guessCounter = 10;
+        guesse = [];
+        newGame();
     } 
     else {
         guessCounter--;
@@ -51,6 +58,7 @@
         guessCounter = 10;
         lossCounter++;
         guesses = [];
+        newGame();
     }
         
     inputWin.textContent = winCounter;
