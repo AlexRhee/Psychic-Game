@@ -13,7 +13,7 @@
         <p>Wins: <span id="inputWin">0</span></p>
         <p>Losses: <span id="inputLoss">0</span></p>
         <p>Guesses left: <span id="inputGuesses">0</span></p>
-        <p>Your Guesses so far: <span id="guesses"> </span></p>
+        <p>Your Guesses so far:<span id="guesses"> </span></p>
 
     </div>
     <script>
@@ -23,40 +23,44 @@
 
     var winCounter = 0;
     var guessCounter = 10;
-    var lossCounter= 0;
+    var lossCounter = 0;
+    var guesses = [];
     var inputWin = document.getElementById("inputWin");
     var inputLoss = document.getElementById("inputLoss");
-    var inputLoss = document.getElementById("inputGuesses");
-    var guesses = document.getElementById("guesses");
+    var inputGuesses = document.getElementById("inputGuesses");
+    var guessLog = document.getElementById("guesses");
+
 
     document.onkeyup = function (event) {
 
     var user = event.key;
     var computer = alphabet[Math.floor(Math.random() * alphabet.length)];
-    var x = event.keyCode;
-
-    alert("User guesses " + user);
-    alert("Computer is thinking of " + computer);
 
     if (computer === user) {
         alert("You guessed it!");
         winCounter++;
+        guessCounter = 10;
     } 
     else {
-        alert("Try again!");
         guessCounter--;
+        guesses.push(" " + user);
     }
 
     if (guessCounter == 0) {
         alert("You lose!");
         guessCounter = 10;
-        lossCounter ++;
+        lossCounter++;
+        guesses = [];
     }
         
     inputWin.textContent = winCounter;
-    inputLoss.textContent = winCounter;
+    inputLoss.textContent = lossCounter;
     inputGuesses.textContent = guessCounter;
-    guesses.textContent = user + ", ";
+    guessLog.textContent = guesses;
+    
+
+
+    
 
 
 
