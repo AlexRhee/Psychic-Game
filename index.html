@@ -45,9 +45,13 @@
         alert("You guessed it!");
         winCounter++;
         guessCounter = 10;
-        guesse = [];
+        guesses = [];
         newGame();
     } 
+    //else if (user.indexOf(alphabet) >= 0) {
+     //   alert("you already guessed that!");
+
+    //}
     else {
         guessCounter--;
         guesses.push(" " + user);
@@ -66,10 +70,6 @@
     inputGuesses.textContent = guessCounter;
     guessLog.textContent = guesses;
     
-
-
-    
-
 
 
     };
